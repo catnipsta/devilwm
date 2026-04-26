@@ -1,5 +1,6 @@
-/* evilwm - minimalist window manager for X11
+/* devilwm - minimalist window manager for X11
  * Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk>
+ * Copyright (C) 2026 Nikolai Klover <nick8klover@outlook.com>
  * see README for license and other details. */
 
 // Screen management.
@@ -24,7 +25,7 @@
 #include "bind.h"
 #include "client.h"
 #include "display.h"
-#include "evilwm.h"
+#include "devilwm.h"
 #include "ewmh.h"
 #include "list.h"
 #include "log.h"
@@ -178,7 +179,7 @@ void screen_init(struct screen *s) {
 			(unsigned char *)&s->supporting, 1);
 	XChangeProperty(display.dpy, s->supporting, X_ATOM(_NET_WM_NAME),
 			XA_STRING, 8, PropModeReplace,
-			(const unsigned char *)"evilwm", 6);
+			(const unsigned char *)"devilwm", 6);
 	XChangeProperty(display.dpy, s->supporting, X_ATOM(_NET_WM_PID),
 			XA_CARDINAL, 32, PropModeReplace,
 			(unsigned char *)&pid, 1);

@@ -1,9 +1,9 @@
-EVILWM INSTALLATION GUIDE
+DEVILWM INSTALLATION GUIDE
 
 
 
 Building from source
-       See the  evilwm home page (https://www.6809.org.uk/evilwm/)
+       See the devilwm home page (https://github.com/catnipsta/devilwm/)
         for downloads. Once you have a copy of the source code, either the git
        repository  or  by  downloading  a  tar  archive,  building   is   very
        straightforward.
@@ -27,10 +27,10 @@ Building from source
 
               $ make install prefix=/usr/local
 
-Starting evilwm
-       The   install   process   puts   a   file  called  evilwm.desktop  into
+Starting devilwm
+       The   install   process   puts   a   file  called  devilwm.desktop  into
        /usr/share/applications, so depending on your desktop manager, you  may
-       simply  be  able  to  pick evilwm from a menu. Otherwise, most managers
+       simply  be  able  to  pick devilwm from a menu. Otherwise, most managers
        will run Xsession, which will look for a file in  your  home  directory
        called  .xsession  and  run  it (so be sure it has execute permission).
        Here's a simple example .xsession file:
@@ -38,13 +38,13 @@ Starting evilwm
               #!/bin/sh
               test -f $HOME/.Xresources && xrdb -merge $HOME/.Xresources
               xsetroot -solid \#400040 -cursor_name left_ptr
-              ( /usr/bin/evilwm -snap 10 >/dev/null 2>&1 & )
+              ( /usr/bin/devilwm -snap 10 >/dev/null 2>&1 & )
               exec xclock -digital -padding 2 -g -0+0
 
        The cursor shape and background colour are set with  standard  X  tools
-       (evilwm  won't  do  this  for  you). xclock becomes the "magic process"
-       (session terminates when it is killed). evilwm itself is started  in  a
-       subshell  otherwise  xclock would become its parent, and killing evilwm
+       (devilwm  won't  do  this  for  you). xclock becomes the "magic process"
+       (session terminates when it is killed). devilwm itself is started  in  a
+       subshell  otherwise  xclock would become its parent, and killing devilwm
        to restart it may result in a zombie process. You could also avoid this
        by  not  exec-ing the "magic process"; the shell will handle child sig-
        nals properly.
@@ -53,8 +53,8 @@ Starting evilwm
        sion.txt).  Obviously, it depends on a lot of external packages.
 
        You  used  to  be  able  to  configure the GNOME session manager to use
-       evilwm as its window manager by running gconf-editor  and  setting  the
-       key /desktop/gnome/session/required_components/windowmanager to evilwm.
+       devilwm as its window manager by running gconf-editor  and  setting  the
+       key /desktop/gnome/session/required_components/windowmanager to devilwm.
        The package information for gconf-editor suggests this approach is  out
        of date, however.
 
@@ -63,5 +63,5 @@ Starting evilwm
        fice.
 
        After  starting,  you  should  be  able  to bring up an xterm with Con-
-       trol+Alt+Enter. For more information on configuring and  using  evilwm,
-       see the manual (https://www.6809.org.uk/evilwm/manual.shtml).
+       trol+Alt+Enter. For more information on configuring and  using  devilwm,
+       see the manual (https://www.6809.org.uk/devilwm/manual.shtml).

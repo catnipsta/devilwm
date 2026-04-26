@@ -1,132 +1,140 @@
-evilwm(1)                   General Commands Manual                  evilwm(1)
+devilwm is a fork of evilwm that adds built-in support for application launchers (defaulted to dmenu).
+devilwm also changes the default keybind of the delete function from Ctrl+Alt+Escape to Ctrl+Alt+C because I find it impossible to believe someone would find it pleasant to stretch their fingers that far everytime they wanted to close a window.
+To clarify, the ONLY changes this fork makes is adding support for launchers and changing the delete function's default bind to something more convenient.
 
 
+devilwm(1)                  General Commands Manual                 devilwm(1)
 
-NAME
-       evilwm--minimalist window manager for X11
+NNAAMMEE
+       devilwm—minimalist window manager for X11
 
-SYNOPSIS
-       evilwm [OPTION]...
+SSYYNNOOPPSSIISS
+       ddeevviillwwmm [_O_P_T_I_O_N]…
 
-DESCRIPTION
-       evilwm  is  a  minimalist  window  manager  for the X Window System. It
-       features plenty of reconfigurable mouse  and  keyboard  controls  while
-       providing  a clean display, uncluttered by less useful window furniture
-       (like title bars).
+DDEESSCCRRIIPPTTIIOONN
+       ddeevviillwwmm is a fork of eevviillwwmm that adds built-in launcher support,
+       utilizing dmenu by default. eevviillwwmm is a minimalist window manager for
+       the X Window System. It features plenty of reconfigurable mouse and
+       keyboard controls while providing a clean display, uncluttered by less
+       useful window furniture (like title bars).
 
-OPTIONS
-       --display display
-              specifies the X display to run on. Usually this can be  inferred
-              from the DISPLAY environment variable.
+OOPPTTIIOONNSS
+       ----ddiissppllaayy _d_i_s_p_l_a_y
+              specifies the X display to run on. Usually this can be inferred
+              from the DDIISSPPLLAAYY environment variable.
 
-       --term termprog
-              specifies  an  alternative  program  to  run when spawning a new
-              terminal (defaults to xterm, or x-terminal-emulator in  Debian).
+       ----tteerrmm _t_e_r_m_p_r_o_g
+              specifies an alternative program to run when spawning a new
+              terminal (defaults to xterm, or x-terminal-emulator in Debian).
               Separate arguments with whitespace, and escape needed whitespace
-              with a backslash. Remember that  special  characters  will  also
+              with a backslash. Remember that special characters will also
               need to be protected from the shell.
 
-       --fn fontname
+       ----llaauunncchheerr _l_a_u_n_c_h_e_r_p_r_o_g
+              specifies an alternative program to run when spawning a new
+              launcher (defaults to dmenu).
+
+       ----ffnn _f_o_n_t_n_a_m_e
               specify a font to use when resizing or displaying window titles.
 
-       --fg colour
-       --fc colour
-       --bg colour
-              frame  colour  of  currently  active, fixed active, and inactive
-              windows respectively. Either specify an  X11  colour  name  like
-              goldenrod, or a hex triplet like #DAA520.
+       ----ffgg _c_o_l_o_u_r
+       ----ffcc _c_o_l_o_u_r
+       ----bbgg _c_o_l_o_u_r
+              frame colour of currently active, fixed active, and inactive
+              windows respectively. Either specify an X11 colour name like
+              ggoollddeennrroodd, or a hex triplet like ##DDAAAA552200.
 
-       --bw borderwidth
+       ----bbww _b_o_r_d_e_r_w_i_d_t_h
               width of window borders in pixels.
 
-       --snap distance
-              enable  snap-to-border  support.  distance  is  the proximity in
+       ----ssnnaapp _d_i_s_t_a_n_c_e
+              enable snap-to-border support. _d_i_s_t_a_n_c_e is the proximity in
               pixels to snap to.
 
-       --wholescreen
-              ignore monitor geometry and use  the  whole  screen  dimensions.
-              This  is the old behaviour from before multi-monitor support was
-              implemented, and may still be useful, eg when one large  monitor
+       ----wwhhoolleessccrreeeenn
+              ignore monitor geometry and use the whole screen dimensions.
+              This is the old behaviour from before multi-monitor support was
+              implemented, and may still be useful, eg when one large monitor
               is driven from multiple outputs.
 
-       --numvdesks value
+       ----nnuummvvddeesskkss _v_a_l_u_e
               number of virtual desktops to provide. Defaults to 8. Any extras
-              will    only    be    accessible    by    pagers    or     using
+              will only be accessible by pagers or using
               Control+Alt+(Left/Right).
 
-       --nosoliddrag
+       ----nnoossoolliiddddrraagg
               draw a window outline while moving or resizing.
 
-       --mask1 modifier[+modifier]...
-       --mask2 modifier[+modifier]...
-       --altmask modifier[+modifier]...
-              override  the  default  keyboard modifiers used to grab keys for
+       ----mmaasskk11 _m_o_d_i_f_i_e_r[+_m_o_d_i_f_i_e_r]…
+       ----mmaasskk22 _m_o_d_i_f_i_e_r[+_m_o_d_i_f_i_e_r]…
+       ----aallttmmaasskk _m_o_d_i_f_i_e_r[+_m_o_d_i_f_i_e_r]…
+              override the default keyboard modifiers used to grab keys for
               window manager functionality.
 
-              mask1 is used for most keyboard controls (default: control+alt),
-              and  mask2 is used for mouse button controls and cycling windows
-              (default: alt). altmask is  used  to  modify  the  behaviour  of
-              certain  controls  (default:  shift). Modifiers may be separated
-              with + signs. Valid modifiers  are  'shift',  'control',  'alt',
-              'mod1'...'mod5'.
+              mmaasskk11 is used for most keyboard controls (default: control+alt),
+              and mmaasskk22 is used for mouse button controls and cycling windows
+              (default: alt). aallttmmaasskk is used to modify the behaviour of
+              certain controls (default: shift). Modifiers may be separated
+              with + signs. Valid modifiers are 'shift', 'control', 'alt',
+              'mod1'…'mod5'.
 
-       --bind key[+modifier]...=[function[,flag]...]
-              bind  a key pressed with specified modifiers to a window manager
-              function. key is an X11 keysym name, modifiers are as above, but
-              may  also include 'mask1', 'mask2' and 'altmask' to refer to the
-              globally-configured combinations. See FUNCTIONS for  a  list  of
-              available functions and the flags they recognise. If function is
+       ----bbiinndd _k_e_y[+_m_o_d_i_f_i_e_r]…=[_f_u_n_c_t_i_o_n[,_f_l_a_g]…]
+              bind a key pressed with specified modifiers to a window manager
+              function. _k_e_y is an X11 keysym name, _m_o_d_i_f_i_e_r_s are as above, but
+              may also include 'mask1', 'mask2' and 'altmask' to refer to the
+              globally-configured combinations. See FUNCTIONS for a list of
+              available functions and the flags they recognise. If _f_u_n_c_t_i_o_n is
               empty, a bind is removed.
 
-       --bind button=[function[,flag]...]
-              bind  a  mouse  button  to  a  window  manager  function.  While
-              modifiers  can be specified, they will be ignored; the button on
+       ----bbiinndd _b_u_t_t_o_n=[_f_u_n_c_t_i_o_n[,_f_l_a_g]…]
+              bind a mouse button to a window manager function. While
+              modifiers can be specified, they will be ignored; the button on
               its own will trigger if pressed within a window's frame, or with
-              'mask2'  held anywhere within a window. Function and flags is as
-              with key binds above. Valid buttons are 'button1'...'button5'.
+              'mask2' held anywhere within a window. Function and flags is as
+              with key binds above. Valid buttons are 'button1'…'button5'.
 
-       --app name/class
-              match an application by instance name and  class  (for  help  in
-              finding  these,  use  the  xprop  tool  to  extract the WM_CLASS
+       ----aapppp _n_a_m_e_/_c_l_a_s_s
+              match an application by instance name and class (for help in
+              finding these, use the _x_p_r_o_p tool to extract the _W_M___C_L_A_S_S
               property).
 
-              Subsequent --geometry, --dock, --vdesk and --fixed options  will
+              Subsequent ----ggeeoommeettrryy, ----ddoocckk, ----vvddeesskk and ----ffiixxeedd options will
               apply to this match.
 
-       -g, --geometry geometry
-              apply  a  geometry  (using  a  standard  X  geometry  string) to
-              applications matching the last --app.
+       --gg, ----ggeeoommeettrryy _g_e_o_m_e_t_r_y
+              apply a geometry (using a standard X geometry string) to
+              applications matching the last ----aapppp.
 
-       --dock specify that application should be considered to be a dock, even
+       ----ddoocckk specify that application should be considered to be a dock, even
               if it lacks the appropriate property.
 
-       -v, --vdesk vdesk
-              specify  a default virtual desktop for applications matching the
-              last --app. Note that virtual desktops are numbered from zero.
+       --vv, ----vvddeesskk _v_d_e_s_k
+              specify a default virtual desktop for applications matching the
+              last ----aapppp. Note that virtual desktops are numbered from zero.
 
-       -f, --fixed
+       --ff, ----ffiixxeedd
               specify that application is to start with a fixed client window.
 
-       -h, --help
+       --hh, ----hheellpp
               show help
 
-       -V, --version
+       --VV, ----vveerrssiioonn
               show program version
 
-       evilwm will also read  options,  one  per  line,  from  a  file  called
-       .evilwmrc   in   the   user's  home  directory.  Options  listed  in  a
-       configuration file should omit the leading dash(es). Options  specified
+       ddeevviillwwmm will also read options, one per line, from a file called
+       _._d_e_v_i_l_w_m_r_c in the user's home directory. Options listed in a
+       configuration file should omit the leading dash(es). Options specified
        on the command line override those found in the configuration file.
 
-USAGE
-       In  evilwm,  the focus follows the mouse pointer, and focus is not lost
-       if you stray onto the root window. The current window border is  shaded
-       gold  (unless it is fixed, in which case blue), with other windows left
+UUSSAAGGEE
+       In ddeevviillwwmm, the focus follows the mouse pointer, and focus is not lost
+       if you stray onto the root window. The current window border is shaded
+       gold (unless it is fixed, in which case blue), with other windows left
        as a dark grey.
 
-       You can use the mouse to manipulate windows  either  by  click/dragging
+       You can use the mouse to manipulate windows either by click/dragging
        the single-pixel border (easier when they align with a screen edge), or
-       by holding down Alt and doing so anywhere in the window.  The  controls
+       by holding down Alt and doing so anywhere in the window. The controls
        are:
 
        Button 1
@@ -138,41 +146,43 @@ USAGE
        Button 3
               Lower window.
 
-       Most  keyboard  controls are used by holding down Control and Alt, then
+       Most keyboard controls are used by holding down Control and Alt, then
        pressing a key. Available functions are:
 
        Return Spawn new terminal.
 
-       Escape Delete current window. Hold  Shift  as  well  to  force  kill  a
+       Alt+P  Spawn launcher.
+
+       C      Delete current window. Hold Shift as well to force kill a
               client.
 
        Insert Lower current window.
 
        H, J, K, L
-              Move  window  left, down, up or right (16 pixels). Holding Shift
+              Move window left, down, up or right (16 pixels). Holding Shift
               resizes the window instead.
 
        Y, U, B, N
-              Move window to the top-left, top-right, bottom-left  or  bottom-
+              Move window to the top-left, top-right, bottom-left or bottom-
               right of the current monitor.
 
        I      Show information about current window.
 
-       Equals Maximise  current window vertically on current monitor (toggle).
+       Equals Maximise current window vertically on current monitor (toggle).
               Holding Shift toggles horizontal maximization.
 
        X      Maximise current window to current monitor (toggle).
 
        D      Toggle visible state of docks, eg pagers and launch bars.
 
-       If compiled with virtual desktop  support,  these  functions  are  also
+       If compiled with virtual desktop support, these functions are also
        available:
 
-       F      Fix  or  unfix current window. Fixed windows remain visible when
+       F      Fix or unfix current window. Fixed windows remain visible when
               you switch virtual desktop.
 
-       1--8   Switch to specific virtual  desktop  (internally,  desktops  are
-              numbered  from zero, so this actually switches to desktops 0--7;
+       1—8    Switch to specific virtual desktop (internally, desktops are
+              numbered from zero, so this actually switches to desktops 0—7;
               this only becomes important if you use application matching).
 
        Left   Switch to next lower numbered virtual desktop.
@@ -183,160 +193,163 @@ USAGE
 
        In addition to the above, Alt+Tab can be used to cycle through windows.
 
-       To make evilwm reread its config, send a HUP signal to the process.  To
+       To make ddeevviillwwmm reread its config, send a HUP signal to the process. To
        make it quit, kill it, ie send a TERM signal.
 
-FUNCTIONS
-       The  keyboard  and  mouse  button  controls  can be configured with the
-       --bind option to a  number  of  built-in  functions.  Typically,  these
-       functions  respond  to  an  additional  set  of flags that modify their
+FFUUNNCCTTIIOONNSS
+       The keyboard and mouse button controls can be configured with the
+       ----bbiinndd option to a number of built-in functions. Typically, these
+       functions respond to an additional set of flags that modify their
        behaviour.
 
-       delete Delete a  window.  This  is  the  co-operative  way  of  closing
-              applications,  as  it  sends the client a signal indicating that
+       ddeelleettee Delete a window. This is the co-operative way of closing
+              applications, as it sends the client a signal indicating that
               they should shut down.
 
-       dock   When called with the toggle  flag,  toggles  visibility  of  any
+       ddoocckk   When called with the ttooggggllee flag, toggles visibility of any
               window claiming to be a dock.
 
-       fix    With  the toggle flag, toggle whether a window is fixed (visible
+       ffiixx    With the ttooggggllee flag, toggle whether a window is fixed (visible
               on all virtual desktops) or not.
 
-       info   Shows extra information about the current window for as long  as
+       iinnffoo   Shows extra information about the current window for as long as
               the key is held.
 
-       kill   Kill  a window. A more forceful way of closing an application if
+       kkiillll   Kill a window. A more forceful way of closing an application if
               it is not responding to delete requests.
 
-       lower  Lower the current window.
+       lloowweerr  Lower the current window.
 
-       move   When bound to a button, moves a window with the mouse.
+       mmoovvee   When bound to a button, moves a window with the mouse.
 
-              When bound to a key, if the relative flag is specified, moves  a
-              window in the direction indicated by other flags: up, down, left
-              or right. Without the relative  flag,  moves  a  window  in  the
+              When bound to a key, if the rreellaattiivvee flag is specified, moves a
+              window in the direction indicated by other flags: uupp, ddoowwnn, lleefftt
+              or rriigghhtt. Without the rreellaattiivvee flag, moves a window in the
               direction specified by other flag to the edge of the monitor.
 
-       next   Cycle to the next window.
+       nneexxtt   Cycle to the next window.
 
-       raise
+       rraaiissee
 
        Raises the current window.
 
-       resize When bound to a button, resizes a window with the mouse.
+       rreessiizzee When bound to a button, resizes a window with the mouse.
 
-              When bound to a key, if the relative flag is specified, modifies
-              the width or height of the window as indicated by  other  flags:
-              up  (reduce height), down (increase height), left (reduce width)
-              or right  (increase  width).  If  instead  the  toggle  flag  is
-              specified,  maximises  along  axes  specified  by  other  flags:
-              horizontal, vertical or both.
+              When bound to a key, if the rreellaattiivvee flag is specified, modifies
+              the width or height of the window as indicated by other flags:
+              uupp (reduce height), ddoowwnn (increase height), lleefftt (reduce width)
+              or rriigghhtt (increase width). If instead the ttooggggllee flag is
+              specified, maximises along axes specified by other flags:
+              hhoorriizzoonnttaall, vveerrttiiccaall or both.
 
-       spawn  Start a terminal.
+       ssppaawwnn  Start a terminal.
 
-       vdesk  With the toggle flag specified, switch to the previously visible
-              vdesk.  With the relative flag set, either increase vdesk number
-              (with up flag) or decrease it (with down flag).
+       llaauunncchheerr
+              Start the launcher.
 
-              If neither flag is specified,  a  numerical  argument  indicates
+       vvddeesskk  With the ttooggggllee flag specified, switch to the previously visible
+              vdesk. With the rreellaattiivvee flag set, either increase vdesk number
+              (with uupp flag) or decrease it (with ddoowwnn flag).
+
+              If neither flag is specified, a numerical argument indicates
               which vdesk to switch to.
 
-DEFAULT BINDS
-       These  are  the  default lists of modifiers, button and keyboard binds.
-       The built-in binds use the globally-configurable modifier  combinations
+DDEEFFAAUULLTT BBIINNDDSS
+       These are the default lists of modifiers, button and keyboard binds.
+       The built-in binds use the globally-configurable modifier combinations
        'mask1', 'mask2' and 'altmask', making a sweeping change to a different
        modifier combination easy.
 
        Note that 'mod1' typically refers to the Alt key.
 
-   Modifiers
-              mask1 control+mod1
-              mask2 mod1
-              altmask shift
+   MMooddiiffiieerrss
+              mask1 control+mod1
+              mask2 mod1
+              altmask shift
 
-   Button binds
-              bind button1=move
-              bind button2=resize
-              bind button3=lower
+   BBuuttttoonn bbiinnddss
+              bind button1=move
+              bind button2=resize
+              bind button3=lower
 
-   Keyboard binds
-              bind mask1+Return=spawn
-              bind mask1+Escape=delete
-              bind mask1+altmask+Escape=kill
-              bind mask1+Insert=lower
-              bind mask1+KP_Insert=lower
-              bind mask1+i=info
-              bind mask2+Tab=next
-              bind mask1+h=move,relative+left
-              bind mask1+j=move,relative+down
-              bind mask1+k=move,relative+up
-              bind mask1+l=move,relative+right
-              bind mask1+y=move,top+left
-              bind mask1+u=move,top+right
-              bind mask1+b=move,bottom+left
-              bind mask1+n=move,bottom+right
-              bind mask1+altmask+h=resize,relative+left
-              bind mask1+altmask+j=resize,relative+down
-              bind mask1+altmask+k=resize,relative+up
-              bind mask1+altmask+l=resize,relative+right
-              bind mask1+equal=resize,toggle+v
-              bind mask1+altmask+equal=resize,toggle+h
-              bind mask1+x=resize,toggle+v+h
-              bind mask1+d=dock,toggle
-              bind mask1+f=fix,toggle
-              bind mask1+1=vdesk,0
-              bind mask1+2=vdesk,1
-              bind mask1+3=vdesk,2
-              bind mask1+4=vdesk,3
-              bind mask1+5=vdesk,4
-              bind mask1+6=vdesk,5
-              bind mask1+7=vdesk,6
-              bind mask1+8=vdesk,7
-              bind mask1+Left=vdesk,relative+down
-              bind mask1+Right=vdesk,relative+up
-              bind mask1+a=vdesk,toggle
+   KKeeyybbooaarrdd bbiinnddss
+              bind mask1+Return=spawn
+              bind mod1+p=launcher
+              bind mask1+c=delete
+              bind mask1+altmask+c=kill
+              bind mask1+Insert=lower
+              bind mask1+KP_Insert=lower
+              bind mask1+i=info
+              bind mask2+Tab=next
+              bind mask1+h=move,relative+left
+              bind mask1+j=move,relative+down
+              bind mask1+k=move,relative+up
+              bind mask1+l=move,relative+right
+              bind mask1+y=move,top+left
+              bind mask1+u=move,top+right
+              bind mask1+b=move,bottom+left
+              bind mask1+n=move,bottom+right
+              bind mask1+altmask+h=resize,relative+left
+              bind mask1+altmask+j=resize,relative+down
+              bind mask1+altmask+k=resize,relative+up
+              bind mask1+altmask+l=resize,relative+right
+              bind mask1+equal=resize,toggle+v
+              bind mask1+altmask+equal=resize,toggle+h
+              bind mask1+x=resize,toggle+v+h
+              bind mask1+d=dock,toggle
+              bind mask1+f=fix,toggle
+              bind mask1+1=vdesk,0
+              bind mask1+2=vdesk,1
+              bind mask1+3=vdesk,2
+              bind mask1+4=vdesk,3
+              bind mask1+5=vdesk,4
+              bind mask1+6=vdesk,5
+              bind mask1+7=vdesk,6
+              bind mask1+8=vdesk,7
+              bind mask1+Left=vdesk,relative+down
+              bind mask1+Right=vdesk,relative+up
+              bind mask1+a=vdesk,toggle
 
-FILES
-       $HOME/.evilwmrc
+FFIILLEESS
+       _$_H_O_M_E_/_._d_e_v_i_l_w_m_r_c
 
-LICENCE
-       Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk>
+LLIICCEENNCCEE
+       Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk> Copyright
+       (C) 2026 Nikolai Klover <nick8klover@outlook.com>
 
        This is free software. You can do what you want to it, but if it breaks
-       something,  you get to pay for the counselling. The code was originally
-       based on aewm, so this is distributed under the same terms, which  fol-
-       low.
+       something, you get to pay for the counselling. The code was originally
+       based on aewm, so this is distributed under the same terms, which
+       follow.
 
-AEWM LICENCE
+AAEEWWMM LLIICCEENNCCEE
        Copyright (c) 1998-2000 Decklin Foster.
 
        THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS", WITHOUT ANY EXPRESS OR
-       IMPLIED WARRANTIES OF ANY KIND. IN NO EVENT SHALL THE  AUTHOR  BE  HELD
+       IMPLIED WARRANTIES OF ANY KIND. IN NO EVENT SHALL THE AUTHOR BE HELD
        LIABLE FOR ANY DAMAGES CONNECTED WITH THE USE OF THIS PROGRAM.
 
-       You  are  granted  permission to copy, publish, distribute, and/or sell
-       copies of this program and any modified versions or derived works, pro-
-       vided that this copyright and notice are not removed or altered.
+       You are granted permission to copy, publish, distribute, and/or sell
+       copies of this program and any modified versions or derived works,
+       provided that this copyright and notice are not removed or altered.
 
        Portions of the code were based on 9wm, which contains this license:
 
-              9wm is free software, and is Copyright (c) 1994 by David Hogan.
-              Permission is granted to all sentient beings to use this
-              software, to make copies of it, and to distribute those copies,
-              provided that:
-                (1) the copyright and licence notices are left intact
-                (2) the recipients are aware that it is free software
-                (3) any unapproved changes in functionality are either
-                      (i) only distributed as patches
-                  or (ii) distributed as a new program which is not called 9wm
-                          and whose documentation gives credit where it is due
-                (4) the author is not held responsible for any defects
-                    or shortcomings in the software, or damages caused by it.
-              There is no warranty for this software.  Have a nice day.
+              9wm is free software, and is Copyright (c) 1994 by David Hogan.
+              Permission is granted to all sentient beings to use this
+              software, to make copies of it, and to distribute those copies,
+              provided that:
+                (1) the copyright and licence notices are left intact
+                (2) the recipients are aware that it is free software
+                (3) any unapproved changes in functionality are either
+                      (i) only distributed as patches
+                  or (ii) distributed as a new program which is not called 9wm
+                          and whose documentation gives credit where it is due
+                (4) the author is not held responsible for any defects
+                    or shortcomings in the software, or damages caused by it.
+              There is no warranty for this software.  Have a nice day.
 
-SEE ALSO
-       xterm (1), xprop (1)
+SSEEEE AALLSSOO
+       xxtteerrmm (1), xxpprroopp (1) ddmmeennuu (1)
 
-
-
-evilwm-1.4                       October 2022                        evilwm(1)
+devilwm-1.4                       April 2026                        devilwm(1)

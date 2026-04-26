@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=devilwm
+Exec=devilwm
+NoDisplay=false
+X-GNOME-WMName=devilwm
+# devilwm doesn't talk XSMP yet, so don't start in the WindowManager phase:
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-Provides=windowmanager

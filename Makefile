@@ -1,6 +1,7 @@
 ############################################################################
-# evilwm - minimalist window manager for X11
+# devilwm - minimalist window manager for X11
 # Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk>
+# Copyright (C) 2026 Nikolai Klover <nick8klover@outlook.com>
 # see README for license and other details.
 
 # do not include any other makefiles above this line.
@@ -113,7 +114,7 @@ INSTALL_PROGRAM = $(INSTALL) -m 0755
 # You shouldn't need to change anything beyond this point
 
 version = 1.4.3
-distdir = evilwm-$(version)
+distdir = devilwm-$(version)
 
 # Generally shouldn't be overridden:
 #  _XOPEN_SOURCE=700 incorporates POSIX.1-2008, for putenv, sigaction and strdup
@@ -123,40 +124,40 @@ EVILWM_CFLAGS = -std=c99 $(CFLAGS) $(WARN)
 EVILWM_LDFLAGS = $(LDFLAGS)
 EVILWM_LDLIBS = -lX11 $(OPT_LDLIBS) $(LDLIBS)
 
-HEADERS = bind.h client.h config.h display.h events.h evilwm.h func.h \
+HEADERS = bind.h client.h config.h display.h events.h devilwm.h func.h \
 	list.h log.h screen.h util.h xalloc.h xconfig.h
 OBJS = bind.o client.o client_move.o client_new.o display.o events.o ewmh.o \
 	func.o list.o log.o main.o screen.o util.o xconfig.o xmalloc.o
 
 .PHONY: all
-all: evilwm$(EXEEXT)
+all: devilwm$(EXEEXT)
 
 $(OBJS): $(HEADERS)
 
 %.o: %.c
 	$(CC) $(EVILWM_CFLAGS) $(EVILWM_CPPFLAGS) -c $<
 
-evilwm$(EXEEXT): $(OBJS)
+devilwm$(EXEEXT): $(OBJS)
 	$(CC) -o $@ $(OBJS) $(EVILWM_LDFLAGS) $(EVILWM_LDLIBS)
 
 .PHONY: install
-install: evilwm$(EXEEXT)
+install: devilwm$(EXEEXT)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
-	$(INSTALL_PROGRAM) evilwm$(EXEEXT) $(DESTDIR)$(bindir)/
+	$(INSTALL_PROGRAM) devilwm$(EXEEXT) $(DESTDIR)$(bindir)/
 	$(INSTALL_DIR) $(DESTDIR)$(man1dir)
-	$(INSTALL_FILE) $(src_dir)/evilwm.1 $(DESTDIR)$(man1dir)/
+	$(INSTALL_FILE) $(src_dir)/devilwm.1 $(DESTDIR)$(man1dir)/
 	$(INSTALL_DIR) $(DESTDIR)$(desktopfilesdir)
-	$(INSTALL_FILE) $(src_dir)/evilwm.desktop $(DESTDIR)$(desktopfilesdir)/
+	$(INSTALL_FILE) $(src_dir)/devilwm.desktop $(DESTDIR)$(desktopfilesdir)/
 
 .PHONY: install-strip
 install-strip: install
-	$(STRIP) $(DESTDIR)$(bindir)/evilwm$(EXEEXT)
+	$(STRIP) $(DESTDIR)$(bindir)/devilwm$(EXEEXT)
 
 .PHONY: uninstall
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/evilwm$(EXEEXT)
-	rm -f $(DESTDIR)$(man1dir)/evilwm.1
-	rm -f $(DESTDIR)$(desktopfilesdir)/evilwm.desktop
+	rm -f $(DESTDIR)$(bindir)/devilwm$(EXEEXT)
+	rm -f $(DESTDIR)$(man1dir)/devilwm.1
+	rm -f $(DESTDIR)$(desktopfilesdir)/devilwm.desktop
 
 .PHONY: dist
 dist:
@@ -166,14 +167,14 @@ dist:
 .PHONY: debuild
 debuild: dist
 	-cd ..; rm -rf $(distdir)/ $(distdir).orig/
-	mv $(distdir).tar.gz ../evilwm_$(version).orig.tar.gz
-	cd ..; tar xfz evilwm_$(version).orig.tar.gz
+	mv $(distdir).tar.gz ../devilwm_$(version).orig.tar.gz
+	cd ..; tar xfz devilwm_$(version).orig.tar.gz
 	rsync -axH debian --exclude='debian/.git/' --exclude='debian/_darcs/' ../$(distdir)/
 	cd ../$(distdir); debuild
 
 .PHONY: clean
 clean:
-	rm -f evilwm$(EXEEXT) $(OBJS)
+	rm -f devilwm$(EXEEXT) $(OBJS)
 
 .PHONY: distclean
 distclean: clean

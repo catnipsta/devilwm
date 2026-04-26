@@ -1,5 +1,6 @@
-/* evilwm - minimalist window manager for X11
+/* devilwm - minimalist window manager for X11
  * Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk>
+ * Copyright (C) 2026 Nikolai Klover <nick8klover@outlook.com>
  * see README for license and other details. */
 
 // X11 event processing.  This is the core of the window manager and processes
@@ -25,7 +26,7 @@
 #include "client.h"
 #include "display.h"
 #include "events.h"
-#include "evilwm.h"
+#include "devilwm.h"
 #include "ewmh.h"
 #include "list.h"
 #include "log.h"

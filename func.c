@@ -1,5 +1,6 @@
-/* evilwm - minimalist window manager for X11
+/* devilwm - minimalist window manager for X11
  * Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk>
+ * Copyright (C) 2026 Nikolai Klover <nick8klover@outlook.com>
  * see README for license and other details. */
 
 // Bindable functions
@@ -19,7 +20,7 @@
 
 #include "client.h"
 #include "display.h"
-#include "evilwm.h"
+#include "devilwm.h"
 #include "func.h"
 #include "list.h"
 #include "log.h"

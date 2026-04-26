@@ -1,5 +1,6 @@
-/* evilwm - minimalist window manager for X11
+/* devilwm - minimalist window manager for X11
  * Copyright (C) 1999-2022 Ciaran Anscomb <evilwm@6809.org.uk>
+ * Copyright (C) 2026 Nikolai Klover <nick8klover@outlook.com>
  * see README for license and other details. */
 
 // main() function parses options and kicks off the main event loop.
@@ -20,13 +21,13 @@
 #include "client.h"
 #include "display.h"
 #include "events.h"
-#include "evilwm.h"
+#include "devilwm.h"
 #include "list.h"
 #include "log.h"
 #include "xalloc.h"
 #include "xconfig.h"
 
-#define CONFIG_FILE ".evilwmrc"
+#define CONFIG_FILE ".devilwmrc"
 
 #define xstr(s) str(s)
 #define str(s) #s
@@ -52,7 +53,7 @@ static void set_app_dock(void);
 static void set_app_vdesk(const char *arg);
 static void set_app_fixed(void);
 
-static struct xconfig_option evilwm_options[] = {
+static struct xconfig_option devilwm_options[] = {
 	{ XCONFIG_STRING,   "fn",           { .s = &option.font } },
 	{ XCONFIG_STRING,   "display",      { .s = &option.display } },
 	{ XCONFIG_UINT,     "numvdesks",    { .u = &option.vdesks } },
@@ -87,8 +88,8 @@ static void handle_signal(int signo);
 
 static void helptext(void) {
 	puts(
-"Usage: evilwm [OPTION]...\n"
-"evilwm is a minimalist window manager for X11.\n"
+"Usage: devilwm [OPTION]...\n"
+"devilwm is a minimalist window manager for X11.\n"
 "\n Options:\n"
 "  --display DISPLAY    X display [from environment]\n"
 "  --term PROGRAM       binary used to spawn terminal [" DEF_TERM "]\n"
@@ -168,7 +169,7 @@ int main(int argc, char *argv[]) {
 		// Default options
 		option = (struct options){0};
 		for (unsigned i = 0; i < NUM_DEFAULT_OPTIONS; i++)
-			xconfig_parse_line(evilwm_options, default_options[i]);
+			xconfig_parse_line(devilwm_options, default_options[i]);
 
 		// Read configuration file
 		const char *home = getenv("HOME");
@@ -176,12 +177,12 @@ int main(int argc, char *argv[]) {
 			char *conffile = xmalloc(strlen(home) + sizeof(CONFIG_FILE) + 2);
 			strcpy(conffile, home);
 			strcat(conffile, "/" CONFIG_FILE);
-			xconfig_parse_file(evilwm_options, conffile);
+			xconfig_parse_file(devilwm_options, conffile);
 			free(conffile);
 		}
 
 		// Parse CLI options
-		ret = xconfig_parse_cli(evilwm_options, argc, argv, &argn);
+		ret = xconfig_parse_cli(devilwm_options, argc, argv, &argn);
 		if (ret == XCONFIG_MISSING_ARG) {
 			fprintf(stderr, "%s: missing argument to `%s'\n", argv[0], argv[argn]);
 			fprintf(stderr, "Try '%s --help' for more information.\n", argv[0]);
@@ -193,7 +194,7 @@ int main(int argc, char *argv[]) {
 				exit(0);
 			} else if (0 == strcmp(argv[argn], "-V")
 				   || 0 == strcmp(argv[argn], "--version")) {
-				LOG_INFO("evilwm version " VERSION "\n");
+				LOG_INFO("devilwm version " VERSION "\n");
 				exit(0);
 			} else {
 				fprintf(stderr, "%s: unrecognised option '%s'\n", argv[0], argv[argn]);
@@ -246,7 +247,7 @@ int main(int argc, char *argv[]) {
 		// after rereading config, re-managing windows, etc.
 
 		// Free any allocated strings in parsed options
-		xconfig_free(evilwm_options);
+		xconfig_free(devilwm_options);
 
 		// Free application configuration
 		while (applications) {
