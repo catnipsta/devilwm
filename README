@@ -1,4 +1,4 @@
-devilwm is a fork of evilwm that adds built-in support for application launchers (defaulted to dmenu).
+devilwm is a fork of evilwm that adds built-in support for application launchers and defaulted to dmenu.
 devilwm also changes the default keybind of the delete function from Ctrl+Alt+Escape to Ctrl+Alt+C because I find it impossible to believe someone would find it pleasant to stretch their fingers that far everytime they wanted to close a window.
 To clarify, the ONLY changes this fork makes is adding support for launchers and changing the delete function's default bind to something more convenient.
 
