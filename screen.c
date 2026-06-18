@@ -179,7 +179,7 @@ void screen_init(struct screen *s) {
 			(unsigned char *)&s->supporting, 1);
 	XChangeProperty(display.dpy, s->supporting, X_ATOM(_NET_WM_NAME),
 			XA_STRING, 8, PropModeReplace,
-			(const unsigned char *)"devilwm", 6);
+			(const unsigned char *)"devilwm", 7);
 	XChangeProperty(display.dpy, s->supporting, X_ATOM(_NET_WM_PID),
 			XA_CARDINAL, 32, PropModeReplace,
 			(unsigned char *)&pid, 1);
